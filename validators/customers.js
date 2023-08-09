@@ -45,6 +45,7 @@ const validatorCustomer = [
     .isLength({
       max: 1,
     }),
+  check("firma", "Debes ingresar criterio de firma").exists().notEmpty(),
   // check("status", "Debes ingresar el status").default(false),
   (req, res, next) => {
     validateResult(req, res, next);
