@@ -39,17 +39,23 @@ const validatorCustomer = [
     .isLength({
       max: 5,
     }),
+  check("facturacion", "Debes ingresar criterio de facturacion")
+    .exists()
+    .notEmpty()
+    .isLength({
+      max: 1,
+    }),
   // check("status", "Debes ingresar el status").default(false),
   (req, res, next) => {
     validateResult(req, res, next);
   },
 ];
 
-const validatorGetCustomer = [
+const validatorID = [
   check("id", "Debes ingresar un id valido").exists().notEmpty().isMongoId(),
   (req, res, next) => {
     validateResult(req, res, next);
   },
 ];
 
-module.exports = { validatorCustomer, validatorGetCustomer };
+module.exports = { validatorCustomer, validatorID };

@@ -45,6 +45,9 @@ const CustomerSchema = new Schema(
     divipolaCity: {
       type: String,
     },
+    facturacion: {
+      type: String,
+    },
 
     // status: {
     //   type: Boolean,
