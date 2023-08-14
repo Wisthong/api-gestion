@@ -21,7 +21,7 @@ const validatorCustomer = [
   check("nit", "Debes ingresar nit o cedula validos")
     .exists()
     .notEmpty()
-    .isLength({ min: 9, max: 16 }),
+    .isLength({ min: 5, max: 16 }),
   check("sex", "Debes ingresar el sexo del cliente").exists().notEmpty(),
   check("dateBirth", "Debes ingresar fecha de nacimiento").exists().notEmpty(),
   check("campus", "Debes ingresar la sede").exists().notEmpty(),
