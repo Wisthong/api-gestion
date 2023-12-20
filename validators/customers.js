@@ -1,5 +1,6 @@
 const { check } = require("express-validator");
 const { validateResult } = require("../helpers/handleValidator");
+const { customerModel } = require("../model");
 
 const validatorCustomer = [
   check("name", "Debes ingresar name valido")
@@ -17,7 +18,14 @@ const validatorCustomer = [
   check("email", "Debes ingresar email")
     .exists()
     .notEmpty()
-    .isLength({ min: 5, max: 50 }),
+    .isEmail()
+    .isLength({ min: 5, max: 50 })
+    .custom(async (value) => {
+      const data = await customerModel.findOne({ email: value });
+      if (data) {
+        return Promise.reject("El email ya se ha registrado");
+      }
+    }),
   check("nit", "Debes ingresar nit o cedula validos")
     .exists()
     .notEmpty()
