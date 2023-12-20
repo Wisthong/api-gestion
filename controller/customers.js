@@ -115,7 +115,7 @@ const createCustomer = async (req = request, res = response) => {
                     <li>Correo Electrónico: ${body.email}</li>
                   </ul>
           
-                  <a class="a" href="https://clientes-df2f0.web.app/control"> Control </a>
+                  <a class="a" href="https://clientes.distribuidorauniversalcali.com/control"> Control </a>
           
                   <p>
                     Plataforma autogestor de clientes <br />
