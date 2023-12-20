@@ -54,6 +54,11 @@ const validatorCustomer = [
       max: 1,
     }),
   check("firma", "Debes ingresar criterio de firma").exists().notEmpty(),
+  check("terminos", "Debes seleccionar los terminos y condiciones")
+    .exists()
+    .isBoolean()
+    .notEmpty(),
+  check("publicidad", "Parametro no requerido").exists().notEmpty().isBoolean(),
   // check("status", "Debes ingresar el status").default(false),
   (req, res, next) => {
     validateResult(req, res, next);

@@ -50,7 +50,14 @@ const CustomerSchema = new Schema(
     },
     firma: {
       type: String,
-      // type: Types.ObjectId,
+    },
+    terminos: {
+      type: Boolean,
+      default: false,
+    },
+    publicidad: {
+      type: Boolean,
+      default: false,
     },
     // status: {
     //   type: Boolean,
