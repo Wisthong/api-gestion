@@ -1,5 +1,5 @@
 const express = require("express");
-const { validatorCustomer, validatorGetCustomer } = require("../validators/customers");
+const { validatorCustomer, validatorID } = require("../validators/customers");
 const router = express.Router();
 const {
   createCustomer,
@@ -13,10 +13,10 @@ router.post("/", [validatorCustomer], createCustomer);
 
 router.get("/", [getCustomers]);
 
-router.get("/:id", [validatorGetCustomer], getCustomer);
+router.get("/:id", [validatorID], getCustomer);
 
-router.put("/:id", [validatorCustomer, validatorGetCustomer], updateCustomer);
+router.put("/:id", [validatorCustomer, validatorID], updateCustomer);
 
-router.delete("/:id", [validatorGetCustomer], deleteCustomer);
+router.delete("/:id", [validatorID], deleteCustomer);
 
 module.exports = router;

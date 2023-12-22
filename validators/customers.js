@@ -1,5 +1,6 @@
 const { check } = require("express-validator");
 const { validateResult } = require("../helpers/handleValidator");
+const { customerModel } = require("../model");
 
 const validatorCustomer = [
   check("name", "Debes ingresar name valido")
@@ -17,11 +18,18 @@ const validatorCustomer = [
   check("email", "Debes ingresar email")
     .exists()
     .notEmpty()
-    .isLength({ min: 5, max: 50 }),
+    .isEmail()
+    .isLength({ min: 5, max: 50 })
+    .custom(async (value) => {
+      const data = await customerModel.findOne({ email: value });
+      if (data) {
+        return Promise.reject("El email ya se ha registrado");
+      }
+    }),
   check("nit", "Debes ingresar nit o cedula validos")
     .exists()
     .notEmpty()
-    .isLength({ min: 9, max: 16 }),
+    .isLength({ min: 5, max: 16 }),
   check("sex", "Debes ingresar el sexo del cliente").exists().notEmpty(),
   check("dateBirth", "Debes ingresar fecha de nacimiento").exists().notEmpty(),
   check("campus", "Debes ingresar la sede").exists().notEmpty(),
@@ -39,17 +47,32 @@ const validatorCustomer = [
     .isLength({
       max: 5,
     }),
+  check("facturacion", "Debes ingresar criterio de facturacion")
+    .exists()
+    .notEmpty()
+    .isLength({
+      max: 1,
+    }),
+  check("firma", "Debes ingresar criterio de firma").exists().notEmpty(),
+  check("terminos", "Debes seleccionar los terminos y condiciones")
+    .exists()
+    .isBoolean()
+    .notEmpty(),
+  check("publicidad", "Parametro no requerido").exists().notEmpty().isBoolean(),
+  check("papeleria", "Parametro no requerido").exists().notEmpty().isBoolean(),
+  check("cosmeticos", "Parametro no requerido").exists().notEmpty().isBoolean(),
+  check("variedades", "Parametro no requerido").exists().notEmpty().isBoolean(),
   // check("status", "Debes ingresar el status").default(false),
   (req, res, next) => {
     validateResult(req, res, next);
   },
 ];
 
-const validatorGetCustomer = [
+const validatorID = [
   check("id", "Debes ingresar un id valido").exists().notEmpty().isMongoId(),
   (req, res, next) => {
     validateResult(req, res, next);
   },
 ];
 
-module.exports = { validatorCustomer, validatorGetCustomer };
+module.exports = { validatorCustomer, validatorID };
