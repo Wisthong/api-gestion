@@ -59,6 +59,18 @@ const CustomerSchema = new Schema(
       type: Boolean,
       default: false,
     },
+    papeleria: {
+      type: Boolean,
+      default: false,
+    },
+    cosmeticos: {
+      type: Boolean,
+      default: false,
+    },
+    variedades: {
+      type: Boolean,
+      default: false,
+    },
     // status: {
     //   type: Boolean,
     //   default: false,

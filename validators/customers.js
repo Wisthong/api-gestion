@@ -59,6 +59,9 @@ const validatorCustomer = [
     .isBoolean()
     .notEmpty(),
   check("publicidad", "Parametro no requerido").exists().notEmpty().isBoolean(),
+  check("papeleria", "Parametro no requerido").exists().notEmpty().isBoolean(),
+  check("cosmeticos", "Parametro no requerido").exists().notEmpty().isBoolean(),
+  check("variedades", "Parametro no requerido").exists().notEmpty().isBoolean(),
   // check("status", "Debes ingresar el status").default(false),
   (req, res, next) => {
     validateResult(req, res, next);

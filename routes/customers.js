@@ -8,13 +8,8 @@ const {
   getCustomers,
   updateCustomer,
 } = require("../controller/customers");
-const { uploadMiddleware } = require("../utils/handleStorage");
 
-router.post(
-  "/",
-  [uploadMiddleware.single("myFile"), validatorCustomer],
-  createCustomer
-);
+router.post("/", [validatorCustomer], createCustomer);
 
 router.get("/", [getCustomers]);
 
