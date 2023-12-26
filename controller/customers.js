@@ -17,7 +17,7 @@ const createCustomer = async (req = request, res = response) => {
     if (data._id.toString.length > 0) {
       const envioContabilidad = transporter.sendMail(
         {
-          from: "wisthongnotificacion@gmail.com",
+          from: process.env.EMAIL,
           to: [
             "wisthongd@gmail.com",
             // "cartera@distribuidorauniversalcali.com",
@@ -134,9 +134,9 @@ const createCustomer = async (req = request, res = response) => {
           if (!err) {
             const envioUser = transporter.sendMail(
               {
-                from: "wisthongnotificacion@gmail.com",
+                from: process.env.EMAIL,
                 to: [email],
-                subject: `USER LOGEADO`,
+                subject: `Papelería Universal Distribuidora, registro exitoso`,
 
                 html: `<!DOCTYPE html>
                 <html lang="en">
