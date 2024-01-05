@@ -20,8 +20,8 @@ const createCustomer = async (req = request, res = response) => {
           from: process.env.EMAIL,
           to: [
             "wisthongd@gmail.com",
-            // "cartera@distribuidorauniversalcali.com",
-            // "asist.contable@distribuidorauniversalcali.com",
+            "cartera@distribuidorauniversalcali.com",
+            "asist.contable@distribuidorauniversalcali.com",
             // "wisthongdaviid@gmail.com",
             // "sistemas@distribuidorauniversalcali.com",
           ],
