@@ -20,12 +20,13 @@ const validatorCustomer = [
     .notEmpty()
     .isEmail()
     .isLength({ min: 5, max: 50 })
-    .custom(async (value) => {
-      const data = await customerModel.findOne({ email: value });
-      if (data) {
-        return Promise.reject("El email ya se ha registrado");
-      }
-    }),
+    // .custom(async (value) => {
+    //   const data = await customerModel.findOne({ email: value });
+    //   if (data) {
+    //     return Promise.reject("El email ya se ha registrado");
+    //   }
+    // })
+    ,
   check("nit", "Debes ingresar nit o cedula validos")
     .exists()
     .notEmpty()
